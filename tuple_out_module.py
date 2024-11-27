@@ -3,7 +3,7 @@
 import random
 
 # Function to roll dice
-def roll_dice(num_dice=3):
+def roll_dice(num_dice = 3):
     
     return [random.randint(1, 6) for _ in range(num_dice)]
 
@@ -27,3 +27,15 @@ def get_fixed_dice(dice_rolls):
 def calculate_score(dice_rolls):
    
     return sum(dice_rolls)
+
+#Function for user input for all the number of players
+def get_players():
+    while True:
+        try: 
+            num_players = int(input("Please enter the number of players playing:"))
+            if num_players > 0:
+                return num_players:
+            else: 
+                print("ERROR! Players must be at least 1. Try again.")
+        except ValueError:
+            print("ERROR! Please enter a valid integer.")
