@@ -13,11 +13,11 @@ print("Get the highest score or get to 50 first to WIN!\n")
 
 num_players = get_players()
 scores = [0] * num_players
-max_score = 50  # score to win
+win_score = 50  # score to win
 
 # main loop for the game
 
-while all(score < max_score for score in scores):
+while all(score < win_score for score in scores):
         for player in range(num_players):
             print(f"\nPlayer {player + 1}'s turn")
             dice_rolls = roll_dice()
@@ -25,5 +25,35 @@ while all(score < max_score for score in scores):
             
             # Handle "tuple out"
             if is_tuple_out(dice_rolls):
-                print("Whoops! That's a tuple put :( you score 0 this round.)")
+                print("Whoops! That's a tuple put :( you score 0 this round.")
                 continue
+
+            # loop for re-rolling 
+            while True:
+                fixed_indices = get_fixed_dice(dice_rolls)
+                print(f"Fixed dice: {[dice_rolls[i] for i in fixed_indices]}")
+
+                # Determine dice to re-roll
+                re_roll_indices = [
+                    i for i in range(len(dice_rolls)) if i not in fixed_indices
+                ]
+                
+                if not re_roll_indices:
+                    print("No dice to re-roll.")
+                    break
+                
+                re_roll_choice = input(
+                    f"Would you liek to re-roll these dices {re_roll_indices}? (yes/no): "
+                ).strip().lower()
+                
+                if re_roll_choice == "yes":
+                    for i in re_roll_indices:
+                        dice_rolls[i] = roll_dice(1)[0]
+                    print(f"New roll: {dice_rolls}")
+                    
+                    if is_tuple_out(dice_rolls):
+                        print("Whoops! That's a tuple put :( you score 0 this round.")
+                        break
+                else:
+                    break
+
