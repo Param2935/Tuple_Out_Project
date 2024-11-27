@@ -19,11 +19,11 @@ max_score = 50  # score to win
 
 while all(score < max_score for score in scores):
         for player in range(num_players):
-            print(f"\nPlayer {player + 1}'s turn!")
+            print(f"\nPlayer {player + 1}'s turn")
             dice_rolls = roll_dice()
             print(f"Initial roll: {dice_rolls}")
             
             # Handle "tuple out"
             if is_tuple_out(dice_rolls):
-                print("Oh no! You 'tupled out' and scored 0 points this turn.")
+                print("Whoops! That's a tuple put :( you score 0 this round.)")
                 continue
