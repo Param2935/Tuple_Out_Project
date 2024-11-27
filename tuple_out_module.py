@@ -8,7 +8,22 @@ def roll_dice(num_dice=3):
     return [random.randint(1, 6) for _ in range(num_dice)]
 
 
-# Function to check for "tuple out"
+# Function to check for tuple out
 def is_tuple_out(dice_rolls):
     
     return len(set(dice_rolls)) == 1
+
+# Function to get fixed dice
+def get_fixed_dice(dice_rolls):
+    
+    fixed = []
+    for i, value in enumerate(dice_rolls):
+        if dice_rolls.count(value) == 2:
+            fixed.append(i)
+    return fixed
+
+
+# Function to calculate the score
+def calculate_score(dice_rolls):
+   
+    return sum(dice_rolls)
