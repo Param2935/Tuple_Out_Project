@@ -34,7 +34,7 @@ def get_players():
         try: 
             num_players = int(input("Please enter the number of players playing:"))
             if num_players > 0:
-                return num_players:
+                return num_players
             else: 
                 print("ERROR! Players must be at least 1. Try again.")
         except ValueError:
