@@ -57,3 +57,17 @@ while all(score < win_score for score in scores):
                 else:
                     break
 
+             # End turn scoring
+            if not is_tuple_out(dice_rolls):
+                turn_score = calculate_score(dice_rolls)
+                scores[player] += turn_score
+                print(f"Player {player + 1} scored {turn_score} points this turn.")
+                print(f"Total score: {scores[player]}")
+            
+            # Check for a winner
+            if scores[player] >= win_score:
+                print(f"\nLESSGO! Player {player + 1} won with final score of {scores[player]}")
+                
+    
+print("\nGame over!")
+
