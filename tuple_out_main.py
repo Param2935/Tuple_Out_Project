@@ -14,6 +14,8 @@ print("Get the highest score or get to 50 first to WIN!\n")
 num_players = get_players()
 scores = [0] * num_players
 win_score = 50  # score to win
+game_over = False  # to print the game over message
+
 
 # main loop for the game
 
@@ -67,7 +69,8 @@ while all(score < win_score for score in scores):
             # Check for a winner
             if scores[player] >= win_score:
                 print(f"\nLESSGO! Player {player + 1} won with final score of {scores[player]}")
-                
+                game_over = True
+                break    # to exit the loop after win
     
 print("\nGame over!")
 
