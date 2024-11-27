@@ -2,15 +2,15 @@
 
 Introduction:
 Tuple Out is a dice-based game where players compete to reach the target score of 50 points first or achieve the highest score. Each turn, players roll dice, fix certain dice to keep their scores, and re-roll others to maximize their score. However, beware of 'tuple out' rolls, which score 0 points for the round. The game dynamically tracks scores, and the first player to reach or exceed 50 wins.
-
-# How to Play:
+ 
+How to Play:
 Run the Program: Use Python to execute the program file (tuple_out_main.py). Make sure you have the helper module (tuple_out_module.py) in the same directory.
 
-# Game Instructions:
+Game Instructions:
 After launching the program, follow the prompts to input the number of players
 The game will alternate turns among the players, displaying dice rolls and scores.
 
-# Gameplay:
+Gameplay:
 Initial Roll: Each player rolls 5 dice at the start of their turn.
 Fix Dice: Players can fix certain dice and re-roll others to improve their score.
 Re-Rolls: Continue re-rolling until satisfied with the roll or no dice remain for re-rolling.
@@ -18,7 +18,7 @@ Score Calculation: The final dice configuration determines the player's score fo
 "Tuple Out" Rule: If the dice roll contains a tuple the player scores 0 points for that turn.
 Winning: The game ends immediately when one player reaches or exceeds 50 points, and the winner is declared.
 
-# Example Gameplay:
+Example Gameplay:
 Sample Commands and Outputs:
 
 The program asks for the number of players:
@@ -41,9 +41,9 @@ The program displays:
 Game over!
 
 
-# Requirements:
+Requirements:
 Python version 3.6 or later.
 
-# Modules Used: 
+Modules Used: 
 os
 sys
