@@ -50,8 +50,6 @@ This is feture added to the final project trackes the time taken by a player in 
 This special feature, using Panda, stores the scores of the players after each round and then, using Seaborn, plots a line graph to visualize the player score over each round.
 
 
-
-
 Requirements:
 Python version 3.6 or later.
 

@@ -2,6 +2,7 @@
 
 import os 
 import sys
+import csv
 import time
 import pandas as pd 
 import seaborn as sns 
@@ -103,6 +104,14 @@ print("\nGame over!")
 # display time data at the end
 for i, time_taken in enumerate(player_time):
     print(f"Player {i+1} total time: {time_taken:.2f} seconds")
+
+
+# creating a csv file and first storing data there
+csv_file = "score_records.csv"
+with open(csv_file, mode="w", newline="") as file:
+    writer =  csv.writer(file)
+    header = ["Round"] + list(score_data.keys())
+    writer.writerow(header)
 
 
 score_df = pd.DataFrame(score_data)
