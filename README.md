@@ -41,6 +41,14 @@ The program displays:
 Game over!
 
 
+Speacial Features:
+
+#1 Time Tracking
+This is feture added to the final project trackes the time taken by a player in their turn. At the end of the game, it will display the total time taken by a player in all of their turns. 
+
+
+
+
 Requirements:
 Python version 3.6 or later.
 
