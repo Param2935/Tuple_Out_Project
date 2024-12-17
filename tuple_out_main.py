@@ -84,6 +84,8 @@ while all(score < win_score for score in scores):
             # Stop timer and record player time
             end_time = time.process_time()
             time_period = end_time - start_time
+            player_time[player] += time_period
+            print(f"Time taken for player {player+1}'s turn: {time_period:.2f} seconds"")
             
             # Check for a winner
             if scores[player] >= win_score:
