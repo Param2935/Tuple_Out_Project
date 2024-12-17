@@ -3,8 +3,9 @@
 import os 
 import sys
 import time
-import pandas as pnd 
+import pandas as pd 
 import seaborn as sns 
+import matplotlib.pyplot as plt
 
 # import fucntion definations from module
 from tuple_out_module import roll_dice, get_fixed_dice, calculate_score, is_tuple_out, get_players
@@ -13,11 +14,18 @@ from tuple_out_module import roll_dice, get_fixed_dice, calculate_score, is_tupl
 print("* * * * * TUPLE OUT: The Dice Game! * * * * * *\n")
 print("Get the highest score or get to 50 first to WIN!\n")
 
-
+# to track player score 
 num_players = get_players()
 scores = [0] * num_players
 win_score = 50  # score to win
 game_over = False  # to print the game over message
+
+# store total time per player 
+player_time = [0] * num_players  
+
+# track score
+score_track = { [] for i in range(num_players)}
+
 
 
 # main loop for the game
