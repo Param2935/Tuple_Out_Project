@@ -35,7 +35,7 @@ while all(score < win_score for score in scores):
             print(f"\nPlayer {player + 1}'s turn")
             
             # start time tracking
-            start_time = time.process_time()
+            start_time = time.time()
 
             dice_rolls = roll_dice()
             print(f"Initial roll: {dice_rolls}")
@@ -82,7 +82,7 @@ while all(score < win_score for score in scores):
                 print(f"Total score: {scores[player]}")
 
             # Stop timer and record player time
-            end_time = time.process_time()
+            end_time = time.time()
             time_period = end_time - start_time
             player_time[player] += time_period
             print(f"Time taken for player {player+1}'s turn: {time_period:.2f} seconds")
