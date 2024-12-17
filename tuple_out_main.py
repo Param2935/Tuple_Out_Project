@@ -2,6 +2,9 @@
 
 import os 
 import sys
+import time
+import pandas as pnd 
+import seaborn as sns 
 
 # import fucntion definations from module
 from tuple_out_module import roll_dice, get_fixed_dice, calculate_score, is_tuple_out, get_players
