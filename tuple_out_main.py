@@ -24,7 +24,7 @@ game_over = False  # to print the game over message
 player_time = [0] * num_players  
 
 # track score
-score_track = { [] for i in range(num_players)}
+score_track = {f"Player {i+1}": [] for i in range(num_players)}
 
 
 
@@ -33,6 +33,10 @@ score_track = { [] for i in range(num_players)}
 while all(score < win_score for score in scores):
         for player in range(num_players):
             print(f"\nPlayer {player + 1}'s turn")
+            
+            # start time tracking
+            start_time = time.process_time()
+
             dice_rolls = roll_dice()
             print(f"Initial roll: {dice_rolls}")
             
@@ -76,6 +80,10 @@ while all(score < win_score for score in scores):
                 scores[player] += turn_score
                 print(f"Player {player + 1} scored {turn_score} points this turn.")
                 print(f"Total score: {scores[player]}")
+
+            # Stop timer and record player time
+            end_time = time.process_time()
+            time_period = end_time - start_time
             
             # Check for a winner
             if scores[player] >= win_score:
