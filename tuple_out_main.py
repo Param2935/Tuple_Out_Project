@@ -103,3 +103,17 @@ print("\nGame over!")
 # display time data at the end
 for i, time_taken in enumerate(player_time):
     print(f"Player {i+1} total time: {time_taken:.2f} seconds")
+
+
+score_df = pd.DataFrame(score_data)
+sns.set(style="darkgrid")
+plt.figure(figsize=(15,7))
+for player in score_df.columns:
+    sns.lineplot(data=score_df[player], label=player, marker='o')
+
+plt.title("Progess Scoreboard")
+plt.xlabel("Round")
+plt.ylabel("Score")
+plt.legend(title="Players")
+plt.show()
+
