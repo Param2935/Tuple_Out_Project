@@ -60,7 +60,7 @@ while all(score < win_score for score in scores):
                     break
                 
                 re_roll_choice = input(
-                    f"Would you liek to re-roll these dices {re_roll_indices}? (yes/no): "
+                    f"Would you like to re-roll these dices {re_roll_indices}? (yes/no): "
                 ).strip().lower()
                 
                 if re_roll_choice == "yes":
@@ -85,7 +85,7 @@ while all(score < win_score for score in scores):
             end_time = time.process_time()
             time_period = end_time - start_time
             player_time[player] += time_period
-            print(f"Time taken for player {player+1}'s turn: {time_period:.2f} seconds"")
+            print(f"Time taken for player {player+1}'s turn: {time_period:.2f} seconds")
             
             # Check for a winner
             if scores[player] >= win_score:
@@ -93,5 +93,8 @@ while all(score < win_score for score in scores):
                 game_over = True
                 break    # to exit the loop after win
     
-print("\nGame over!")
+print("\nGame over!") 
 
+# display time data at the end
+for i, time_taken in enumerate(player_time):
+    print(f"Player {i+1} total time: {time_taken:.2f} seconds")
