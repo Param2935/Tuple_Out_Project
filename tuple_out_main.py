@@ -31,11 +31,10 @@ player_time = [0] * num_players
 # track score
 score_data = {f"Player {i+1}": [] for i in range(num_players)}
 
-
+current_round = 1
 
 # main loop for the game
-
-while all(score < win_score for score in scores):
+while all(score < win_score for score in scores and (max_rounds is None or current_round <= max_rounds)::
         for player in range(num_players):
             print(f"\nPlayer {player + 1}'s turn")
             
@@ -102,6 +101,8 @@ while all(score < win_score for score in scores):
                 print(f"\nLESSGO! Player {player + 1} won with final score of {scores[player]}")
                 game_over = True
                 break    # to exit the loop after win
+        
+        current_round += 1
     
         # Check for max rounds 
         if max_rounds and round_counter >= max_rounds:
@@ -139,7 +140,10 @@ if not any(score >= win_score for score in scores):
 rounds = max(len(scores) for scores in score_data.values())
 for player, scores in score_data.items():
     while len(scores) < rounds:
-        scores.append(scores[-1]) 
+        if scores:
+            scores.append(scores[-1]) 
+        else:   # start with 0 if the player has no scores
+            scores.append(0)
 
 
 
