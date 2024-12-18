@@ -50,7 +50,7 @@ This special feature, using Panda, stores the scores of the players after each r
 
 
 Additional Feature to Original Consolidation:
-This feature allows the player(s) to choose between a defaut game mode and a custom mode. In the custom mode player(s) can manipulate the number of rounds and the highest score needed to win. 
+This feature allows the player(s) to choose between a defaut game mode and a custom mode. In the custom mode player(s) can manipulate the number of rounds and the highest score needed to win.
 
 
 Requirements:
