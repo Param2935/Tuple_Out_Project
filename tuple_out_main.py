@@ -106,12 +106,23 @@ for i, time_taken in enumerate(player_time):
     print(f"Player {i+1} total time: {time_taken:.2f} seconds")
 
 
+# filling missing rounds with the last score so the list are same length
+rounds = max(len(scores) for scores in score_data.values())
+for player, scores in score_data.items():
+    while len(scores) < rounds:
+        scores.append(scores[-1]) 
+
 # creating a csv file and first storing data there
 csv_file = "score_records.csv"
 with open(csv_file, mode="w", newline="") as file:
     writer =  csv.writer(file)
     header = ["Round"] + list(score_data.keys())
     writer.writerow(header)
+
+    # write score data round by round
+    for i in range(rounds):
+        row = [i + 1] + [score_data[player][i] for player in score_data.keys()]
+        writer.writerow(row)
 
 
 score_df = pd.DataFrame(score_data)
