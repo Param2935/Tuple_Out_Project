@@ -128,8 +128,20 @@ with open(csv_file, mode="w", newline="") as file:
 score_df = pd.DataFrame(score_data)
 sns.set(style="darkgrid")
 plt.figure(figsize=(11,7))
+
+
+# add 0 as the origin and rounds starting from 1
+rounds = list(range(len(score_df) + 1))  # include round 0
 for player in score_df.columns:
-    sns.lineplot(data=score_df[player], label=player, marker='o')
+    sns.lineplot(
+        x=rounds,  
+        y=[0] + list(score_df[player]),  # add 0 as the starting score
+        label=player,
+        marker='o',
+    )
+
+plt.xticks(ticks=rounds)
+
 
 plt.title("Progess Scoreboard")
 plt.xlabel("Round")
