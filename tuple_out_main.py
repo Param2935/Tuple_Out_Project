@@ -140,6 +140,7 @@ for player in score_df.columns:
         marker='o',
     )
 
+# plots 
 plt.xticks(ticks=rounds)
 
 
