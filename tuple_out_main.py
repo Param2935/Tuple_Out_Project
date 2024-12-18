@@ -34,15 +34,17 @@ score_data = {f"Player {i+1}": [] for i in range(num_players)}
 current_round = 1
 
 # main loop for the game
-while all(score < win_score for score in scores and (max_rounds is None or current_round <= max_rounds)::
+while all(score < win_score for score in scores) and (max_rounds is None or current_round <= max_rounds):
         for player in range(num_players):
             print(f"\nPlayer {player + 1}'s turn")
+            time.sleep(1)
             
             # start time tracking
             start_time = time.time()
 
             dice_rolls = roll_dice()
             print(f"Initial roll: {dice_rolls}")
+            time.sleep(1.5)
             
             # Handle "tuple out"
             if is_tuple_out(dice_rolls):
@@ -76,6 +78,7 @@ while all(score < win_score for score in scores and (max_rounds is None or curre
                     
                     if is_tuple_out(dice_rolls):
                         print("Whoops! That's a tuple put :( you score 0 this round.")
+                        time.sleep(1.5)
                         # store data score
                         score_data[f"Player {player+1}"].append(scores[player]) 
                         break
@@ -103,6 +106,8 @@ while all(score < win_score for score in scores and (max_rounds is None or curre
                 break    # to exit the loop after win
         
         current_round += 1
+        print("Starting next round..")
+        time.sleep(1.5)
     
         # Check for max rounds 
         if max_rounds and round_counter >= max_rounds:
@@ -165,6 +170,9 @@ sns.set(style="darkgrid")
 plt.figure(figsize=(11,7))
 
 
+print("Generating progress scoreboard...")
+time.sleep(2)
+
 # add 0 as the origin and rounds starting from 1
 rounds = list(range(len(score_df) + 1))  # include round 0
 for player in score_df.columns:
@@ -174,6 +182,7 @@ for player in score_df.columns:
         label=player,
         marker='o',
     )
+
 
 # plots 
 plt.xticks(ticks=rounds)
