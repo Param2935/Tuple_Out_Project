@@ -41,7 +41,7 @@ def get_players():
             print("ERROR! Please enter a valid integer.")
 
 # Function for choosing game mode
-def get_game_settings():
+def get_game_mode():
     print("\nChoose Game Mode:")
     print("1. Default Mode (Highest score or first to 50 wins)")
     print("2. Custom Mode (Set your own winning score or maximum rounds)")

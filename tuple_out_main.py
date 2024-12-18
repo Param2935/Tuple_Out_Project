@@ -9,7 +9,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # import fucntion definations from module
-from tuple_out_module import roll_dice, get_fixed_dice, calculate_score, is_tuple_out, get_players
+from tuple_out_module import roll_dice, get_fixed_dice, calculate_score, is_tuple_out, get_players, get_game_mode
 
 
 print("* * * * * TUPLE OUT: The Dice Game! * * * * * *\n")
@@ -18,8 +18,12 @@ print("Get the highest score or get to 50 first to WIN!\n")
 # to track player score 
 num_players = get_players()
 scores = [0] * num_players
-win_score = 50  # score to win
+game_settings = get_game_mode()
+win_score = game_settings["win_score"]
+max_rounds = game_settings["max_rounds"]
 game_over = False  # to print the game over message
+
+round_counter = 0   # track the number of rounds
 
 # store total time per player 
 player_time = [0] * num_players  
@@ -99,11 +103,36 @@ while all(score < win_score for score in scores):
                 game_over = True
                 break    # to exit the loop after win
     
-print("\nGame over!") 
+        # Check for max rounds 
+        if max_rounds and round_counter >= max_rounds:
+          print("\nMaximum rounds reached!")
+          game_over = True
+
+
+
+
+print("\nGame over!")
+print("\nFinal Scores:")
+for i, score in enumerate(scores):
+    print(f"Player {i + 1}: {score}")
+
+
 
 # display time data at the end
 for i, time_taken in enumerate(player_time):
     print(f"Player {i+1} total time: {time_taken:.2f} seconds")
+
+
+
+# determine winner in case of max rounds
+if not any(score >= win_score for score in scores):
+    highest_score = max(scores)
+    winners = [i + 1 for i, score in enumerate(scores) if score == highest_score]
+    if len(winners) > 1:
+        print(f"\nIt's a tie between Players {', '.join(map(str, winners))} with {highest_score} points each!")
+    else:
+        print(f"\nPlayer {winners[0]} wins with the highest score of {highest_score}!")
+
 
 
 # filling missing rounds with the last score so the list are same length
@@ -111,6 +140,8 @@ rounds = max(len(scores) for scores in score_data.values())
 for player, scores in score_data.items():
     while len(scores) < rounds:
         scores.append(scores[-1]) 
+
+
 
 # creating a csv file and first storing data there
 csv_file = "score_records.csv"
