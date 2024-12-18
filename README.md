@@ -42,12 +42,15 @@ Game over!
 
 
 Speacial Features:
-
 #1 Time Tracking
 This is feture added to the final project trackes the time taken by a player in their turn. At the end of the game, it will display the total time taken by a player in all of their turns. The clock start when the intital roll and stops when the player's turn end. The program will record this time and keep adding time taken for each turn. After the game is over it will display the total time taken by (each) player in their turn(s).
 
 #2 Data Visualization 
 This special feature, using Panda, stores the scores of the players after each round and then, using Seaborn, plots a line graph to visualize the player score over each round.
+
+
+Additional Feature to Original Consolidation:
+This feature allows the player(s) to choose between a defaut game mode and a custom mode. In the custom mode player(s) can manipulate the number of rounds and the highest score needed to win. \
 
 
 Requirements:
